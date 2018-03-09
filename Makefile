@@ -1,12 +1,14 @@
 packages:
+	apt-get install -y python-software-properties software-properties-common
+	add-apt-repository -y ppa:ondrej/php
 	apt-get update
-	apt-get install -y mysql-client rsync wget
-	# Install drush-launcher. This assumes you are using composer to install
-	# your desired version of Drush.
-	wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.5.1/drush.phar
-	chmod +x /usr/local/bin/drush
+	apt-get install -y php7.1 mysql-client rsync wget
+	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+	a2enmod php7.1
 	composer install
 	ln -sf ${TUGBOAT_ROOT}/web /var/www/html
+	# By exporting the vendor/bin directory to our path, Drush 9 will work.
+	export PATH=${TUGBOAT_ROOT}/vendor/bin:$PATH
 
 
 drupalconfig:
