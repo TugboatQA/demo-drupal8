@@ -36,6 +36,7 @@ packages:
 		rsync
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 	a2enmod php7.1
+	a2dismod php7.0
 	composer install
 	ln -sf ${TUGBOAT_ROOT}/web /var/www/html
 	# By exporting the vendor/bin directory to our path, Drush 9 will work.
