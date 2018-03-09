@@ -34,14 +34,11 @@ packages:
 		libapache2-mod-php7.1 \
 		mysql-client \
 		rsync
-	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 	a2enmod php7.1
 	a2dismod php7.0
 	composer install
 	ln -sf ${TUGBOAT_ROOT}/web /var/www/html
-	# By exporting the vendor/bin directory to our path, Drush 9 will work.
-	echo "PATH=\"${TUGBOAT_ROOT}/vendor/bin:$PATH\"" > /etc/environment
-
+	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 drupalconfig:
 	cp ${TUGBOAT_ROOT}/dist/settings.php /var/www/html/sites/default/settings.php
