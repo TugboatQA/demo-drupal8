@@ -14,7 +14,7 @@ packages:
 	composer install
 	ln -sf ${TUGBOAT_ROOT}/web /var/www/html
 	# By exporting the vendor/bin directory to our path, Drush 9 will work.
-	export PATH=${TUGBOAT_ROOT}/vendor/bin:$PATH
+	echo "PATH=\"${TUGBOAT_ROOT}/vendor/bin:$PATH\"" > /etc/environment
 
 
 drupalconfig:
@@ -36,6 +36,7 @@ importfiles:
 
 build:
 	drush -r /var/www/html cache-rebuild
+	drush -r /var/www/html updb -y
 
 cleanup:
 	apt-get clean
