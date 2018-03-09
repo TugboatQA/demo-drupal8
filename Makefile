@@ -36,11 +36,11 @@ packages:
 		rsync
 	a2enmod php7.1
 	a2dismod php7.0
-	composer install
+	composer install --no-ansi --no-interaction
 	ln -sf ${TUGBOAT_ROOT}/web /var/www/html
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 	echo "export PATH=\"${TUGBOAT_ROOT}/vendor/bin:${PATH}\"" >> /etc/profile.d/container_environment.sh
-	/etc/profile.d/container_environment.sh
+	. /etc/profile.d/container_environment.sh
 
 drupalconfig:
 	cp ${TUGBOAT_ROOT}/dist/settings.php /var/www/html/sites/default/settings.php
