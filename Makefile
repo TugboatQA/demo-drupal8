@@ -28,8 +28,8 @@ DIST_DIR = ${TUGBOAT_ROOT}/.tugboat/dist
 packages: install-php-$(PHP_VERSION) install-composer install-drush-launcher
 #	# Point /var/www/html to the drupal root.
 	ln -sf ${DRUPAL_ROOT} ${WWW_DIR}
-#	# Run composer install to install the desired version of drush specified in
-#	# composer.json.
+#	# Run composer install (among other things) the desired version of drush
+#	# specified in composer.json.
 	composer install --no-ansi
 
 drupalconfig:
