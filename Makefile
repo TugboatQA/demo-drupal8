@@ -28,6 +28,9 @@ DIST_DIR = ${TUGBOAT_ROOT}/.tugboat/dist
 packages: install-php-$(PHP_VERSION) install-composer install-drush-launcher
 #	# Point /var/www/html to the drupal root.
 	ln -sf ${DRUPAL_ROOT} ${WWW_DIR}
+#	# Run composer install to install the desired version of drush specified in
+#	# composer.json.
+	composer install --no-ansi
 
 drupalconfig:
 #	# Copy the settings.local.php that works for Tugboat into sites/default.
