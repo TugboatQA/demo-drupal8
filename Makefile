@@ -58,7 +58,7 @@ cleanup:
 	apt-get clean
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-tugboat-init: packages createdb drupalconfig importdb importfiles build cleanup
+tugboat-init: packages drupalconfig createdb importdb importfiles build cleanup
 tugboat-update: importdb importfiles build cleanup
 tugboat-build: build
 
