@@ -7,9 +7,6 @@ PHP_VERSION := 7.2
 # your Drupal /sites directory. This is typically just default unless you are
 # using Drupal multisite.
 DRUPAL_SITE := default
-# Specify the name of the Drupal database that is configured in settings. Note
-# that the username and password for this database is tugboat/tugboat.
-DRUPAL_DB_NAME := drupal8
 # Specify the location of the directory that is the web root of the site,
 # relative to the repo root, i.e. $TUGBOAT_ROOT. For example, if /web is where
 # Drupal is installed, set DRUPAL_ROOT = ${TUGBOAT_ROOT}/web.
@@ -35,6 +32,7 @@ packages: install-php-$(PHP_VERSION) install-composer install-drush-launcher
 drupalconfig:
 #	# Copy the settings.local.php that works for Tugboat into sites/default.
 	cp ${DIST_DIR}/settings.local.php ${DRUPAL_SITE_DIR}/settings.local.php
+	cp ${DIST_DIR}/settings.php ${DRUPAL_SITE_DIR}/settings.php
 #	# Generate a hash_salt to secure the site.
 	echo "\$$settings['hash_salt'] = '$$(openssl rand -hex 32)';" >> ${DRUPAL_SITE_DIR}/settings.local.php
 
