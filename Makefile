@@ -22,7 +22,7 @@ DIST_DIR = ${TUGBOAT_ROOT}/.tugboat/dist
 # service.
 -include /usr/share/tugboat/Makefile
 
-packages: install-php-$(PHP_VERSION) install-composer install-drush-launcher
+packages: install-php-$(PHP_VERSION) install-composer install-drush-launcher install-package-rsync
 #	# Point /var/www/html to the drupal root.
 	ln -sf ${DRUPAL_ROOT} ${WWW_DIR}
 #	# Run composer install (among other things) the desired version of drush
